@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>page</title>
+<script src="https://tedshd.io/lib/ajax/ajax.js"></script>
+</head>
+<body>
+  <h1>Use CORS set & get cookie in api</h1>
+  <h2>step 1</h2>
+<button id="step_1">api response php set cookie</button>
+  <h2>step 2</h2>
+<button id="step_2">post api</button>
+</body>
+<script>
+document.querySelector('#step_1').addEventListener('click', function (e) {
+  e.preventDefault();
+  ajax({
+      method: 'POST',
+      url: 'https://tedshd.io/api/cors/index.php',
+      data: {
+          method: 'set'
+      },
+      withCredentials: true,
+      response: 'json',
+      success: function (data) {
+          console.log(data);
+      },
+      error: function(status, data) {
+          // status = http status
+          // do something
+      }
+  });
+})
+
+document.querySelector('#step_2').addEventListener('click', function (e) {
+  e.preventDefault();
+  ajax({
+      method: 'POST',
+      url: 'https://tedshd.io/api/cors/index.php',
+      data: {
+          method: 'get'
+      },
+      withCredentials: true,
+      response: 'json',
+      success: function (data) {
+          console.log(data);
+      },
+      error: function(status, data) {
+          // status = http status
+          // do something
+      }
+  });
+})
+</script>
+</html>
